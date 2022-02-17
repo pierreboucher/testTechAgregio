@@ -27,9 +27,9 @@ public class ParcApplicationService {
 	}
 
 	// CREER UN PARC
-	public void create(Parc parc) throws Exception {
+	public Parc create(Parc parc) throws Exception {
 		assertParc(parc);
-		parcRepository.save(parc);
+		return parcRepository.save(parc);
 	}
 
 	// Verifications Regles Metier du Parc

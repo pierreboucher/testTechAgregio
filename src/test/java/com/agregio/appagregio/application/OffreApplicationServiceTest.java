@@ -50,21 +50,24 @@ class OffreApplicationServiceTest {
 		//Given
 		Offre offre = new Offre(idOffre, marche, energieOffre, blocHoraireOffre, prixPlancher, parc);
 		Mockito.when(parcRepositoryMock.getById(idParc)).thenReturn(Optional.of(parc));
-		Mockito.when(offreRepositoryMock.isParcDejaUtilise(idParc)).thenReturn(false);		
+		Mockito.when(offreRepositoryMock.isParcDejaUtilise(idParc)).thenReturn(false);
+		Mockito.when(offreRepositoryMock.save(offre)).thenReturn(offre);
 		//Then
 		assertDoesNotThrow(() -> offreApplicationService.create(offre));
+		assertEquals(offreApplicationService.create(offre),offre);
 	}
 	
 	@Test
 	void itShouldCreateAnOfferWithAllConsistentInputAndNullId() throws Exception {
 		//Given
 		Mockito.when(parcRepositoryMock.getById(idParc)).thenReturn(Optional.of(parc));
-		Mockito.when(offreRepositoryMock.isParcDejaUtilise(idParc)).thenReturn(false);		
-		//When
+		Mockito.when(offreRepositoryMock.isParcDejaUtilise(idParc)).thenReturn(false);	
 		Offre offre = new Offre(null, marche, energieOffre, blocHoraireOffre, prixPlancher, parc);
+		Mockito.when(offreRepositoryMock.save(offre)).thenReturn(offre);	
 		//Then
 		assertThat(offre.getId()).isNotNull();
 		assertDoesNotThrow(() -> offreApplicationService.create(offre));
+		assertEquals(offreApplicationService.create(offre),offre);
 	}
 	
 	@Test

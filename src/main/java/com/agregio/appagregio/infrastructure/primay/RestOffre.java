@@ -7,8 +7,8 @@ import com.agregio.appagregio.domain.model.Offre;
 import com.agregio.appagregio.domain.model.Parc;
 
 class RestOffre {
-
-	private UUID id;
+	
+	UUID id;
 	private Marche marche;
 	private Double energie;
 	private RestBlocHoraire blocHoraire;

@@ -31,10 +31,10 @@ public class OffreApplicationService {
 	}
 
 	// CREER UNE OFFRE
-	public void create(Offre offre) throws Exception {
+	public Offre create(Offre offre) throws Exception {
 		assertOffre(offre);
 		assertParc(offre);
-		offreRepository.save(offre);
+		return offreRepository.save(offre);
 	}
 
 	// Vérification Regles Metiers du Parc

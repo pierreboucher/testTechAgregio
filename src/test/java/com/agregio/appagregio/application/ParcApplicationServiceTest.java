@@ -38,8 +38,10 @@ class ParcApplicationServiceTest {
 	void itShouldCreateAParkWithCorrectInput() throws Exception {
 		// Given
 		Parc parc = new Parc(id, nom, type, energie, blocHoraire);
+		Mockito.when(parcRepositoryMock.save(parc)).thenReturn(parc);
 		// Then
 		assertDoesNotThrow(() -> parcApplicationService.create(parc));
+		assertEquals(parcApplicationService.create(parc),parc);
 	}
 
 	@Test

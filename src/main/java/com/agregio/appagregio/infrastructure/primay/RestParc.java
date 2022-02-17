@@ -25,7 +25,7 @@ class RestParc {
 		return new RestParc(parc.getId(), parc.getNom(), parc.getType(), parc.getEnergie(), RestBlocHoraire.from(parc.getBlocHoraire()));
 	}
 	
-	Parc toDomain() {
+	Parc toDomain() throws Exception {
 		return new Parc(getId(), getNom(), getType(), getEnergie(), getBlocHoraire().toDomain());
 	}
 

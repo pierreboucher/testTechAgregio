@@ -19,8 +19,8 @@ class PostGreSQLParcRepository implements ParcRepository{
 	}
 	
 	@Override
-	public void save(Parc parc) {
-		parcsSpringRepository.save(ParcEntity.from(parc));
+	public Parc save(Parc parc) {
+		return parcsSpringRepository.save(ParcEntity.from(parc)).toDomain();
 	}
 
 	@Override

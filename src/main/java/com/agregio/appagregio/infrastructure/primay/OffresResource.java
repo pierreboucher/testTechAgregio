@@ -1,5 +1,6 @@
 package com.agregio.appagregio.infrastructure.primay;
 
+import java.net.URI;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.agregio.appagregio.application.OffreApplicationService;
 
@@ -23,8 +25,13 @@ class OffresResource {
 	}
 
 	@PostMapping
-	public void create(@RequestBody RestOffre restOffre) throws Exception {
-		offreService.create(restOffre.toDomain());
+	public ResponseEntity<Object> create(@RequestBody RestOffre restOffre) throws Exception {
+		String id = offreService.create(restOffre.toDomain()).getId().toString();
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(id)
+                .toUri();
+        return ResponseEntity.created(location).build();
 	}
 	
 	@GetMapping("/{id}")

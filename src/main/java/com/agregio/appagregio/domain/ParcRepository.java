@@ -8,7 +8,7 @@ import com.agregio.appagregio.domain.model.Parc;
 
 public interface ParcRepository {
 	
-	void save(Parc parc);
+	Parc save(Parc parc);
 
 	Optional<Parc> getById(UUID id);
 

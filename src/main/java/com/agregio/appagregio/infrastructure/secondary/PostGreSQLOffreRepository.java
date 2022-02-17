@@ -18,8 +18,8 @@ class PostGreSQLOffreRepository implements OffreRepository{
 	}
 
 	@Override
-	public void save(Offre offre) {
-		offreSpringRepository.save(OffreEntity.from(offre));	
+	public Offre save(Offre offre) {
+		return offreSpringRepository.save(OffreEntity.from(offre)).toDomain();	
 	}
 
 	@Override

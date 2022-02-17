@@ -8,7 +8,7 @@ import com.agregio.appagregio.domain.model.Offre;
 
 public interface OffreRepository {
 	
-	void save(Offre offre);
+	Offre save(Offre offre);
 	
 	Optional<Offre> getById(UUID id);
 
